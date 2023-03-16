@@ -2,30 +2,28 @@
 ================================================== -->
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<nav id="art-menu" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collasped">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-          <a class="navbar-brand" href="#">Disport Technology</a>
-        </div>
+<script type="module">
+			import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
-        <!-- Navigation Toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collasped">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#home" class="scroll-nav">Home</a></li>
-                <li><a href="#about" class="scroll-nav">About</a></li>                            
-                <li><a href="#portfolio" class="scroll-nav">Portfolio</a></li>
-                <li><a href="#contact" class="scroll-nav">Contact</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+			const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+            const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+            const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            const cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+            function animate() {
+                requestAnimationFrame( animate );
+                renderer.render( scene, camera );
+            }
+            animate();
+            camera.position.z = 5;
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+		</script>
+
 <div id="home" class="text-center">
     <div class="layer">
         <div class="content">
